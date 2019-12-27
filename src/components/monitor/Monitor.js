@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-
+import { connect } from 'react-redux';
+import { productsFetch } from '../../actions'
 class Monitor extends Component {
 
 
@@ -8,14 +8,32 @@ class Monitor extends Component {
         super(props)
     }
 
+  
+    componentDidMount() {
+       
+    }
+
+
+    showProducts() {
+        return this.props.products && this.props.products.map(product => (
+            console.log("product: "+ product.id ,  {...product})
+            
+            // <div> {product.title} </div>
+        ))
+    }
+
     render(){
+        const { products } = this.props;
+        console.log(products);
+        
         return(
             <div>
-                asdas
+               {this.showProducts}
             </div>
         )
     }
 
 }
+
 
 export default Monitor
